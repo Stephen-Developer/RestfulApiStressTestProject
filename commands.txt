@@ -1,0 +1,2 @@
+jmeter -n -t RestfulApiTesting.jmx -Jthreads=10 -Jrampup=1 -Jloops=1
+

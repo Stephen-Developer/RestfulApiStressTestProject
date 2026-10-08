@@ -1,0 +1,7 @@
+{
+    "name": "${name}",
+    "email": "${name}@test.com",
+    "role": "user",
+    "age": "42",
+    "active": "true"
+}
