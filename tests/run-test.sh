@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ $# -lt 3 ]; then
   echo "Usage: $0 <threads> <rampup> <loops> [slow|veryslow|normal]"
   exit 1

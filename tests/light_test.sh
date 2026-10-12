@@ -10,7 +10,4 @@ SPEED=${1:-normal}
 
 echo "Running light test"
 
-echo "Script dir: ${SCRIPT_DIR}"
-echo "Project dir: ${PROJECT_DIR}"
-
 "${SCRIPT_DIR}/run-test.sh" "$THREADS" "$RAMPUP" "$LOOPS" "$SPEED"

@@ -3,17 +3,33 @@
 # Script that runs every test
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-"${SCRIPT_DIR}/smoke_test.sh" "veryslow"
-"${SCRIPT_DIR}/smoke_test.sh" "slow"
-"${SCRIPT_DIR}/smoke_test.sh"
-"${SCRIPT_DIR}/light_test.sh" "veryslow"
-"${SCRIPT_DIR}/light_test.sh" "slow"
-"${SCRIPT_DIR}/light_test.sh"
-"${SCRIPT_DIR}/medium_test.sh" "veryslow"
-"${SCRIPT_DIR}/medium_test.sh" "slow"
-"${SCRIPT_DIR}/medium_test.sh"
-"${SCRIPT_DIR}/heavy_test.sh" "veryslow"
-"${SCRIPT_DIR}/heavy_test.sh" "slow"
-"${SCRIPT_DIR}/heavy_test.sh"
+#The test to run
+tests=(
+    "smoke_test.sh"
+    "light_test.sh"
+    "medium_test.sh"
+    "heavy_test.sh"
+)
+
+#The speeds to run the tests at
+profiles=(
+    "veryslow"
+    "slow"
+    ""
+)
+
+#Run each test at each speed
+for test in "${tests[@]}"
+do
+    for profile in "${profiles[@]}"
+    do
+        if [ -n "$profile" ]; then
+            "${SCRIPT_DIR}/${test}" "$profile"
+            continue
+        fi
+
+        "${SCRIPT_DIR}/${test}"
+    done
+done
 
 echo "Finished Runnning all tests"
